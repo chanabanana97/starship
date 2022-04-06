@@ -1,7 +1,7 @@
 provider "aws" {
 }
 resource "aws_instance" "tfvm" {
-  ami = "ami-0885b1f6bd170450c"
+  ami = "ami-07d8796a2b0f8d29c"
   instance_type = "t2.micro"
   vpc_security_group_ids = [ aws_security_group.websg.id ]
   user_data = <<-EOF
