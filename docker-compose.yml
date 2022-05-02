@@ -28,3 +28,15 @@ services:
       - MONGO_INITDB_DATABASE=super_db
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=pass
+
+  myvault:
+    image: vault
+    container_name: myvault
+    ports:
+      - 8200:8200
+    environment:
+      VAULT_SERVER: "http://127.0.0.1:8200"
+      VAULT_DEV_ROOT_TOKEN_ID: "root"
+      VAULT_ADDR: "http://0.0.0.0:8200"
+      TOKEN: "root"
+      VAULT_TOKEN: "root"
