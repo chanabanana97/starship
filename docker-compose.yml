@@ -4,7 +4,7 @@ services:
   web:
     image: dalfenchana/myimage:latest
     ports: 
-      - 5000:5000
+      - 80:5000
     environment:
       - store_id_list=305
       - api_key=4c281f5053fde83d09ea4501a0dcd1ff387b9a3b

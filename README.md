@@ -21,4 +21,4 @@ to run the code:
 
 to terminate the instance when done: `terraform destroy`
  
-the **output** of the terraform apply will be the `instance_ips` which you can run locally on your computer to see the app. `'http://<instance_ips>:5000'`
+the **output** of the terraform apply will be the `instance_ips` which you can run locally on your computer to see the app. `'http://<instance_ips>'`
