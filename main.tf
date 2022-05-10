@@ -25,6 +25,11 @@ resource "aws_instance" "web_server" {
     destination = "docker-compose.yml"
 
 }
+  provisioner "file" {
+    source      = "nginx.conf"
+    destination = "nginx.conf"
+
+}
   provisioner "remote-exec" {
     #  download docker and docker-compose automatically at launch of ec2 instance
       inline = [
@@ -33,7 +38,9 @@ resource "aws_instance" "web_server" {
         "sudo curl -L \"https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)\" -o /usr/local/bin/docker-compose",
         "sudo chmod +x /usr/local/bin/docker-compose",
         "sudo gpasswd -a $USER docker",
-        "sudo docker-compose up -d"
+        "sudo docker-compose up -d",
+        "sudo docker exec -it myvault sh -c 'vault kv put secret/data apikey=4c281f5053fde83d09ea4501a0dcd1ff387b9a3b'",
+
       ]
   }
 

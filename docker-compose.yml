@@ -1,10 +1,23 @@
 version: '3.9'
 
+networks:
+  my-network:
+
 services:
+  nginx:
+    image: nginx
+    container_name: nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - web
+    networks:
+      - my-network
+
   web:
     image: dalfenchana/myimage:latest
-    ports: 
-      - 80:5000
     environment:
       - store_id_list=305
       - api_key=4c281f5053fde83d09ea4501a0dcd1ff387b9a3b
@@ -16,6 +29,8 @@ services:
       - ./:/apps
     links:
       - mongodb
+    networks:
+      - my-network
 
   mongodb:
     image: mongo:latest
@@ -28,3 +43,19 @@ services:
       - MONGO_INITDB_DATABASE=super_db
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=pass
+    networks:
+      - my-network
+
+  myvault:
+    image: vault
+    container_name: myvault
+    ports:
+      - 8200:8200
+    environment:
+      VAULT_SERVER: "http://127.0.0.1:8200"
+      VAULT_DEV_ROOT_TOKEN_ID: "root"
+      VAULT_ADDR: "http://0.0.0.0:8200"
+      TOKEN: "root"
+      VAULT_TOKEN: "root"
+    networks:
+      - my-network
