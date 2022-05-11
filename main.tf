@@ -25,6 +25,11 @@ resource "aws_instance" "web_server" {
     destination = "docker-compose.yml"
 
 }
+  provisioner "file" {
+    source      = "nginx.conf"
+    destination = "nginx.conf"
+
+}
   provisioner "remote-exec" {
     #  download docker and docker-compose automatically at launch of ec2 instance
       inline = [

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>webapp</title>
+</head>
+<body>
+<br><br>
+<br><br>
+<form action="{{ url_for('get_cheapest') }}" method="post" style="direction: rtl; text-align: center;">
+    <label for="item">הכנס שם פריט: </label>
+    <br><br>
+    <input type="text" name="item">
+    <br>
+    <br>
+    <input type="submit">
+</form>
+
+<h1 style="text-align: center"> {{ data }}  </h1>
+</body>
+</html>
