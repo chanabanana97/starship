@@ -22,3 +22,14 @@ to run the code:
 to terminate the instance when done: `terraform destroy`
  
 the **output** of the terraform apply will be the `instance_ips` which you can run locally on your computer to see the app. `'http://<instance_ips>'`
+
+## code architecture
+
+![image](https://user-images.githubusercontent.com/62520653/168463099-349cd2aa-81b3-4e5e-b45d-641d31f512c3.png)
+
+### Containers:
+- nginx - open source software for web serving, reverse proxying load balancing, and more. serves the _webapp_ on port 80.
+- webapp - flask app from image (from rezilion.py) connects to _vault_ and _mongodb_
+- mongodb - open source NoSQL database management program. contains data for _webapp_
+- vault - Vault secures, stores, and tightly controls access to tokens, passwords, certificates, API keys, and other secrets in modern computing. contains api key for _webapp_.
+
