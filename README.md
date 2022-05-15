@@ -25,7 +25,7 @@ the **output** of the terraform apply will be the `instance_ips` which you can r
 
 ## code architecture
 
-![image](https://user-images.githubusercontent.com/62520653/167911592-4efa5a29-bf13-41bd-a83e-6e69002286b3.png)
+![image](https://user-images.githubusercontent.com/62520653/168463099-349cd2aa-81b3-4e5e-b45d-641d31f512c3.png)
 
 ### Containers:
 - nginx - open source software for web serving, reverse proxying load balancing, and more. serves the _webapp_ on port 80.
